@@ -1,0 +1,16 @@
+##Iniciando com Docker-compose
+  docker-compose up -d
+    rodando o comando no diretorio do arquivo docker-compose.yaml, 
+      inicia os containers
+
+  docker-compose up -d
+    -d é detached, para não travar o terminal
+
+  docker-compose up -d --build 
+    inicia os containers mas primeiro faz o build das imagens
+
+  docker-compose down
+    este comando desce o serviço
+
+  docker-compose ps
+    lista os containers que estão rodando com docker-compose

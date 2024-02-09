@@ -1,0 +1,8 @@
+##Otimização utilizando multistage building
+  docker build -t radieske/laravel:prod laravel -f laravel/Dockerfile.prod
+    -f é necessário toda vez que mudar o nome padrão do dockerfile, deve ser
+      usado para indicar o novo nome do dockerfile
+    :prod indica a tag de prod 
+
+  docker images | grep laravel
+    esse comando buscará todas imagens que tem laravel no meu docker

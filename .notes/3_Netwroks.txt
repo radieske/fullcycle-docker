@@ -1,0 +1,23 @@
+##Tipos de network
+  bridge
+  host
+  overlay
+  maclan
+  none
+
+  Os tipos mais usados são Bridge e Host
+
+#BRIDGE
+##Criando uma network Bridge
+  docker network create --driver bridge minharede
+    minharede é o name da network
+
+##Conectando um container a uma network já existente
+  docker network connect minharede ubuntu3
+    minha rede é o nome da network
+    ubuntu3 é o nome do containet q deseja conectar
+
+#HOST
+  docker run --rm -d --name nginx --network host nginx  
+    Faz a ligação dos containers docker com a rede da máquina local
+

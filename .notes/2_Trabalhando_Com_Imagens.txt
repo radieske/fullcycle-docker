@@ -1,0 +1,14 @@
+##Gerando imagem
+  docker build -t radieske/nginx-with-vim:latest .
+    -t é o nome da imagem, nome da tag
+    . indica a pasta em que existe o dockerfile
+
+##ENTRYPOINT x CMD
+  ENTRYPOINT são comandos fixos
+  CMD são comandos variáveis
+  caso seja inserido algum parâmetro na execução do docker run, este sobrescreverá
+    o que tiver de CMD, caso este esteja antes do ENTRYPONT.
+  para que o CMD funcione depois do ENTRYPOINT é necessário que o ENTRYPOINT seja finzaliado
+    com o comando exec "$@", este permite que commands sejam executados posteriormente.
+  sendo assim, CMD deve ser usado depois do ENTRYPOINT.
+  

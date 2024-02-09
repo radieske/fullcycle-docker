@@ -1,0 +1,11 @@
+FROM node:15
+
+WORKDIR /usr/src/app
+
+COPY . . 
+# o docker vai copiar todos os arquivos e pastas do diretorio atual 
+# para o diretorio /usr/src/app
+
+EXPOSE 3000
+
+CMD ["node", "index.js"]

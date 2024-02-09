@@ -1,0 +1,66 @@
+##Comandos Básicos
+docker ps 
+  Lista os containers que estão rodando
+
+docker ps -a
+  Lista todos containers ativos ou que em algum momento já foram executados
+
+docker run nome-container:versao
+  Roda um container
+
+docker start id-container
+  Inicia a execução de um container
+
+docker stop id-container
+  Para a execução de um container
+
+
+##Parâmetros
+docker run -it ubuntu bash
+  -i deixa a imagem docker que subir interativa, vincula o container ao terminal
+  -t permite inserir comandos no terminal
+
+docker run -it --rm ubuntu bash
+  --rm remove o container da listagem logo após ser executado
+
+
+##Publicação de portas com NGINX
+docker run -d --name nginx -p 8080:80 nginx
+  -d desvincula o terminal do processo do nginx (não deixa o terminal travado), mas mantem rodando o container
+  -p é a porta que será publicada para trabalhar
+  --name da um nome para o container
+  ao acessar a porta 8080 da minha máquina será redirecionado para porta 80 do container nginx
+
+##Removendo containers
+docker rm id-container
+  Remove um container específico pelo id
+
+docker rm name-container
+  Remove um container específico pelo nome
+
+docker rm $(docker ps -a -q) -f   
+  Remove todos os conteiners ativos e inativos
+    rm remove os containers
+    $(docker ps -a -q) lista o id de todos os containers
+    -f força a remoção mesmo que estiver em execução
+
+
+docker rm id-container -f
+  -f Força a remoção de um container específico mesmo que esteja em execução
+
+##Acessar e alterararquivos no nginx
+docker exec nginx bash
+  exec acessa/executa o comando desejado de um container
+
+##Bind mounts
+docker run -d --mount type=bind,source="$(pwd)"/html, target=/usr/share/nginx/html nginx
+  --mount monta um volume em um container
+    parametros:
+      type neste caso diz que será um bind
+      source é o caminho de onde da sua maquina
+        $(pwd) pega o caminho da pasta que vc está no momento no computador
+      target é onde deseja montar a pasta do computador dentro do container
+
+##Volumes
+docker colume create volume meuvolume
+  cria um novo volume que pode ser compartilhado entre containers se feito o mount

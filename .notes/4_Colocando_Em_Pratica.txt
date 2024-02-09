@@ -1,0 +1,35 @@
+## Ativando entrypoint e command
+  docker logs container_name
+    ativa os logs do container
+
+  um comando (CMD) é basicamente anexado ao ENTRYPOINT
+
+##Dockerfile  + comando de execução com parametros no terminal
+  Dockerfile 
+  [...]
+  ENTRYPOINT ["php","laravel/artisan","serve"]
+  CMD ["--host=0.0.0.0"]
+  [...]
+
+  Comando
+    docker run --rm -d -name laravel -p 8001:8001 radieske/laravel 
+      --host=0.0.0.0 --port=8001
+
+  Pode ser observado que no docker file é deixado um comando padrão, que indica 
+  que a porta será a 8000, porém ao executar o comando, está sendo indicado que
+  o comando da porta será sobrescrito e executará o container na porta 8001.
+
+##Criando aplicação Node.js sem o Node
+  -crie uma pasta local para o node
+  -em um terminal nesta pasta do node:
+    docker run --rm -it -v $(pwd)/:/usr/src/app -p 3000:3000 node:15 bash
+  -depois instale o express 
+    npm install express --save
+  -crie um arquivo, pode ser index.js
+  -crie o programa que deseja e depois basta executar e acessar na sua maquina
+    node index.js
+  -o app estará rodando em http://localhost:3000
+
+##Gerando imagem da aplicação Node.js
+
+    
